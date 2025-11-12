@@ -1,0 +1,59 @@
+rules:
+  - description: "Project Goal"
+    content: |
+      The purpose of this project is to transform and automate the workflow currently handled through the provided Excel file into a modern web application built with React and Supabase.
+
+  - description: "Tech Stack"
+    content: |
+      - Frontend: React (with clean, modular, and maintainable components)
+      - Backend & Auth: Supabase (for database, API, and user authentication)
+
+  - description: "Functional Requirements"
+    content: |
+      - Implement complete user registration and login using Supabase Auth.
+      - Once authenticated, users can view, add, edit, and manage data equivalent to what’s contained in the Excel file.
+      - Mirror the Excel data and logic into Supabase tables and columns.
+      - Automate any formulas, aggregations, or calculations from the Excel file using Supabase queries or React logic.
+      - Replace manual Excel editing with a clean, responsive, and user-friendly UI.
+      - Ensure all data is securely stored and only accessible by authenticated users.
+
+  - description: "Database and Structure"
+    content: |
+      - Use Supabase tables to replicate the structure and logic of the Excel file.
+      - Maintain the same naming convention and field relationships for clarity.
+      - Normalize the data model if necessary, while keeping compatibility with existing Excel data.
+
+  - description: "Frontend Guidelines"
+    content: |
+      - Use functional React components with hooks (useState, useEffect, useContext, etc.).
+      - Follow a clear folder structure (components, pages, services, hooks, utils).
+      - Use environment variables for Supabase configuration and project settings.
+      - Generate pages and components for forms, data tables, and dashboards.
+      - Ensure UI components allow easy data input, viewing, and management.
+      - Keep design minimal, responsive, and consistent.
+
+  - description: "Supabase Integration"
+    content: |
+      - Use Supabase JS client for all authentication and database interactions.
+      - Implement secure CRUD operations for all relevant data.
+      - Utilize Supabase Auth for registration, login, and session persistence.
+      - Apply real-time data sync where necessary.
+
+  - description: "Automation and Logic"
+    content: |
+      - Reproduce all Excel formulas and calculations directly in the app logic or via Supabase SQL functions.
+      - Automate any repetitive or manual Excel workflows.
+      - Ensure calculated values update dynamically based on user input or database changes.
+
+  - description: "Best Practices"
+    content: |
+      - Prioritize clarity, scalability, and performance in code generation.
+      - Use clear naming conventions consistent with the Excel file structure.
+      - Write reusable and documented components.
+      - Keep business logic separate from UI logic.
+      - Follow React and Supabase best practices.
+
+  - description: "Objective"
+    content: |
+      Create a fully automated system that replicates and enhances the functionality of the Excel file,
+      providing a modern, web-based solution for data management, user authentication, and process automation.

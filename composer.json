@@ -1,0 +1,12 @@
+{
+  "name": "risorsati/import",
+  "description": "Import script for Excel to Supabase",
+  "require": {
+    "php": ">=7.4",
+    "phpoffice/phpspreadsheet": "^1.29"
+  },
+  "autoload": {
+    "files": []
+  }
+}
+

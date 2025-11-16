@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
+import { FormPubbliciSection } from '../components/FormPubblici/FormPubbliciSection'
 import './Page.css'
 import './Profilo.css'
 
@@ -148,6 +149,10 @@ export const Profilo = () => {
               </button>
             </div>
           </form>
+        </div>
+
+        <div className="profilo-section">
+          <FormPubbliciSection />
         </div>
       </div>
     </div>

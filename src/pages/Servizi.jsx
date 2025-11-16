@@ -45,6 +45,22 @@ export const Servizi = () => {
     return months[monthNum - 1]
   }
 
+  // Converte ore decimali in formato "ore:minuti"
+  // Esempio: 5.5 -> "5:30", 8.5 -> "8:30", 5.25 -> "5:15"
+  const formatDurata = (oreDecimali) => {
+    if (!oreDecimali) return '-'
+    
+    const ore = Math.floor(oreDecimali)
+    const minuti = Math.round((oreDecimali - ore) * 60)
+    
+    // Se i minuti sono 60, aggiungi un'ora e azzera i minuti
+    if (minuti === 60) {
+      return `${ore + 1}:00`
+    }
+    
+    return `${ore}:${minuti.toString().padStart(2, '0')}`
+  }
+
   const handleCreate = () => {
     setSelectedServizio(null)
     setIsModalOpen(true)
@@ -102,7 +118,7 @@ export const Servizi = () => {
       label: 'Durata',
       render: (_, row) =>
         row.durata_ore_numeric
-          ? `${row.durata_ore_numeric.toFixed(2)}h`
+          ? formatDurata(row.durata_ore_numeric)
           : '-',
     },
     {

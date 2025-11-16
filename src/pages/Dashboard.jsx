@@ -260,13 +260,13 @@ export const Dashboard = () => {
                   />
                   <Bar 
                     dataKey="feeFissi" 
-                    fill="#34d399" 
+                    fill="#fbbf24" 
                     name="FEE Fissi"
                     radius={[4, 4, 0, 0]}
                   />
                   <Bar 
                     dataKey="feeTotale" 
-                    fill="#f59e0b" 
+                    fill="#34d399" 
                     name="FEE Totale"
                     radius={[4, 4, 0, 0]}
                   />

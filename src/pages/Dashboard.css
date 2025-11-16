@@ -23,7 +23,7 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -80,6 +80,241 @@
   font-size: 0.75rem;
   color: #94a3b8;
   margin-top: 0.25rem;
+}
+
+/* Sezione Statistiche FEE */
+.fee-stats-section {
+  margin-top: 3rem;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.fee-stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.fee-stats-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.fee-stats-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fee-stats-filter label {
+  font-weight: 500;
+  color: #64748b;
+}
+
+.year-select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: white;
+  font-size: 0.875rem;
+  color: #1e293b;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.year-select:hover {
+  border-color: #64748b;
+}
+
+.year-select:focus {
+  outline: none;
+  border-color: #64748b;
+  box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
+
+.fee-chart-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.fee-summary {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.fee-summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fee-summary-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.fee-summary-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  font-family: 'Courier New', monospace;
+}
+
+.fee-summary-total .fee-summary-label {
+  color: #475569;
+}
+
+.fee-summary-total .fee-summary-value {
+  color: #475569;
+  font-size: 1.75rem;
+}
+
+/* Sezione Insights */
+.insights-section {
+  margin-top: 3rem;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.insights-section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.insight-card {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.insight-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.insight-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  font-family: 'Courier New', monospace;
+}
+
+.insight-value.positive {
+  color: #10b981;
+}
+
+.insight-value.negative {
+  color: #ef4444;
+}
+
+/* Sezione Top Clienti e Risorse */
+.top-section {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.top-table-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.top-table-container h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.top-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.top-table thead {
+  background: #f8fafc;
+}
+
+.top-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #1e293b;
+  border-bottom: 2px solid #e2e8f0;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.top-table th:last-child {
+  text-align: right;
+}
+
+.top-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.2s;
+}
+
+.top-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.top-table td {
+  padding: 1rem;
+  color: #1e293b;
+}
+
+.top-table td:last-child {
+  text-align: right;
+}
+
+.no-data {
+  padding: 2rem;
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
 }
 
 

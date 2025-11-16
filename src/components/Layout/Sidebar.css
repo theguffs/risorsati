@@ -102,6 +102,34 @@
   padding: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-profile-link {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+}
+
+.sidebar-profile-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-left-color: #3b82f6;
+}
+
+.sidebar-profile-link.active {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border-left-color: #3b82f6;
+  font-weight: 500;
 }
 
 .user-info {

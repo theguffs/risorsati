@@ -8,28 +8,41 @@ import './Page.css'
 export const Servizi = () => {
   const [servizi, setServizi] = useState([])
   const [loading, setLoading] = useState(true)
-  const [page, setPage] = useState(1)
-  const [pageSize] = useState(50)
-  const [totalCount, setTotalCount] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedServizio, setSelectedServizio] = useState(null)
 
+  // Filtro mese/anno - default mese corrente
+  const currentDate = new Date()
+  const [mese, setMese] = useState(currentDate.getMonth() + 1)
+  const [anno, setAnno] = useState(currentDate.getFullYear())
+
+  const isCurrentMonth = 
+    mese === currentDate.getMonth() + 1 && 
+    anno === currentDate.getFullYear()
+
   useEffect(() => {
     loadServizi()
-  }, [page])
+  }, [mese, anno])
 
   const loadServizi = async () => {
     try {
       setLoading(true)
-      const { data, count } = await serviziService.getAll(page, pageSize)
+      const data = await serviziService.getByMonth(mese, anno)
       setServizi(data || [])
-      setTotalCount(count || 0)
     } catch (error) {
       console.error('Errore caricamento servizi:', error)
       alert('Errore nel caricamento dei servizi: ' + error.message)
     } finally {
       setLoading(false)
     }
+  }
+
+  const getMonthName = (monthNum) => {
+    const months = [
+      'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
+      'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'
+    ]
+    return months[monthNum - 1]
   }
 
   const handleCreate = () => {
@@ -139,10 +152,85 @@ export const Servizi = () => {
         <p>Gestione servizi mensili</p>
       </div>
 
-      <div className="page-actions">
+      {/* Filtro Mese/Anno */}
+      <div className="page-filters" style={{ 
+        display: 'flex', 
+        gap: '1rem', 
+        alignItems: 'center',
+        marginBottom: '1.5rem',
+        padding: '1rem',
+        background: '#f8fafc',
+        borderRadius: '8px',
+      }}>
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+          <label style={{ fontWeight: 500 }}>Mese:</label>
+          <select
+            value={mese}
+            onChange={(e) => setMese(Number(e.target.value))}
+            style={{
+              padding: '0.5rem',
+              border: '1px solid #cbd5e1',
+              borderRadius: '6px',
+            }}
+          >
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(m => (
+              <option key={m} value={m}>{getMonthName(m)}</option>
+            ))}
+          </select>
+        </div>
+
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+          <label style={{ fontWeight: 500 }}>Anno:</label>
+          <input
+            type="number"
+            value={anno}
+            onChange={(e) => setAnno(Number(e.target.value))}
+            min="2020"
+            max="2100"
+            style={{
+              padding: '0.5rem',
+              border: '1px solid #cbd5e1',
+              borderRadius: '6px',
+              width: '100px',
+            }}
+          />
+        </div>
+
+        {isCurrentMonth && (
+          <span style={{ 
+            padding: '0.25rem 0.75rem',
+            background: '#10b981',
+            color: 'white',
+            borderRadius: '4px',
+            fontSize: '0.875rem',
+            fontWeight: 500,
+          }}>
+            Mese Corrente
+          </span>
+        )}
+
+        {!isCurrentMonth && (
+          <span style={{ 
+            padding: '0.25rem 0.75rem',
+            background: '#64748b',
+            color: 'white',
+            borderRadius: '4px',
+            fontSize: '0.875rem',
+            fontWeight: 500,
+          }}>
+            Storico
+          </span>
+        )}
+      </div>
+
+      <div className="page-actions" style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
         <button className="btn btn-primary" onClick={handleCreate}>
           + Nuovo Servizio
         </button>
+      </div>
+
+      <div style={{ marginBottom: '1rem', color: '#64748b', fontSize: '0.875rem' }}>
+        Mostrando {servizi.length} serviz{servizi.length === 1 ? 'io' : 'i'} per {getMonthName(mese)} {anno}
       </div>
 
       <DataTable
@@ -151,26 +239,6 @@ export const Servizi = () => {
         loading={loading}
         onRowClick={(row) => handleEdit(row)}
       />
-
-      <div className="pagination">
-        <button
-          onClick={() => setPage((p) => Math.max(1, p - 1))}
-          disabled={page === 1}
-          className="btn btn-secondary"
-        >
-          ← Precedente
-        </button>
-        <span>
-          Pagina {page} di {Math.ceil(totalCount / pageSize)} ({totalCount} totali)
-        </span>
-        <button
-          onClick={() => setPage((p) => p + 1)}
-          disabled={page * pageSize >= totalCount}
-          className="btn btn-secondary"
-        >
-          Successiva →
-        </button>
-      </div>
 
       <Modal
         isOpen={isModalOpen}

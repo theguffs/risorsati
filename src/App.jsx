@@ -9,6 +9,7 @@ import { Fissi } from './pages/Fissi'
 import { Risorse } from './pages/Risorse'
 import { Ristoranti } from './pages/Ristoranti'
 import { Ruoli } from './pages/Ruoli'
+import { Profilo } from './pages/Profilo'
 
 // Componente per route pubbliche (login) - redirect se già autenticato
 const PublicRoute = ({ children }) => {
@@ -101,6 +102,16 @@ function AppRoutes() {
           <ProtectedRoute>
             <Layout>
               <Ruoli />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profilo"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Profilo />
             </Layout>
           </ProtectedRoute>
         }

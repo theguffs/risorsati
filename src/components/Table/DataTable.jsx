@@ -23,7 +23,13 @@ export const DataTable = ({ columns, data, loading, onRowClick }) => {
         <thead>
           <tr>
             {columns.map((col) => (
-              <th key={col.key}>{col.label}</th>
+              <th 
+                key={col.key}
+                data-column={col.key}
+                className={col.key === 'azioni' ? 'actions-column' : ''}
+              >
+                {col.label}
+              </th>
             ))}
           </tr>
         </thead>
@@ -35,7 +41,11 @@ export const DataTable = ({ columns, data, loading, onRowClick }) => {
               className={onRowClick ? 'clickable' : ''}
             >
               {columns.map((col) => (
-                <td key={col.key}>
+                <td 
+                  key={col.key}
+                  data-column={col.key}
+                  className={col.key === 'azioni' ? 'actions-column' : ''}
+                >
                   {col.render
                     ? col.render(row[col.key], row)
                     : row[col.key] ?? '-'}

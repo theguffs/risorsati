@@ -28,7 +28,7 @@ export const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <h2>Risorsati</h2>
+        <h2>Gestio</h2>
         <p>Gestione Risorse</p>
       </div>
       <nav className="sidebar-nav">
@@ -48,12 +48,20 @@ export const Sidebar = () => {
       </nav>
       <div className="sidebar-footer">
         {user && (
-          <div className="user-info">
-            <div className="user-email">{user.email}</div>
-            <button onClick={handleLogout} className="btn-logout">
-              🚪 Esci
-            </button>
-          </div>
+          <>
+            <Link
+              to="/profilo"
+              className={`sidebar-profile-link ${location.pathname === '/profilo' ? 'active' : ''}`}
+            >
+              👤 Profilo
+            </Link>
+            <div className="user-info">
+              <div className="user-email">{user.email}</div>
+              <button onClick={handleLogout} className="btn-logout">
+                🚪 Esci
+              </button>
+            </div>
+          </>
         )}
       </div>
     </aside>

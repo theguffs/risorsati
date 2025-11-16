@@ -36,7 +36,7 @@ export const Login = () => {
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <h1>Risorsati</h1>
+          <h1>Gestio</h1>
           <p>Gestione Risorse</p>
         </div>
 

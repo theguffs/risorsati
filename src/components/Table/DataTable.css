@@ -48,6 +48,12 @@
   color: #1e293b;
 }
 
+/* Centra la colonna Azioni */
+.data-table th.actions-column,
+.data-table td.actions-column {
+  text-align: center;
+}
+
 .table-loading,
 .table-empty {
   background: white;
